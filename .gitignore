@@ -1,0 +1,5 @@
+.vs/*
+MESquare.Paparazzi/bin/*
+MESquare.Paparazzi/obj/*
+packages/*
+*.pfx
