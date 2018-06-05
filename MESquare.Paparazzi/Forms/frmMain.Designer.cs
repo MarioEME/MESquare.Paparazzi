@@ -31,17 +31,22 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnTakeScreenshot = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -54,6 +59,12 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(170, 17);
+            this.lblStatus.Text = "Press \'Start\' to start the process";
             // 
             // toolStrip1
             // 
@@ -71,29 +82,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(317, 70);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 70);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 70);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(170, 17);
-            this.lblStatus.Text = "Press \'Start\' to start the process";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // btnStart
             // 
@@ -119,6 +107,11 @@
             this.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 70);
+            // 
             // btnTakeScreenshot
             // 
             this.btnTakeScreenshot.AutoSize = false;
@@ -130,6 +123,11 @@
             this.btnTakeScreenshot.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTakeScreenshot.Click += new System.EventHandler(this.btnTakeScreenshot_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 70);
+            // 
             // btnSettings
             // 
             this.btnSettings.AutoSize = false;
@@ -140,6 +138,47 @@
             this.btnSettings.Text = "Options";
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Paparazy";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMenuItemStart,
+            this.btnMenuItemStop,
+            this.btnMenuItemOpen});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            // 
+            // btnMenuItemStop
+            // 
+            this.btnMenuItemStop.Enabled = false;
+            this.btnMenuItemStop.Image = global::MESquare.Paparazzi.Properties.Resources.stop_simple_48x48;
+            this.btnMenuItemStop.Name = "btnMenuItemStop";
+            this.btnMenuItemStop.Size = new System.Drawing.Size(180, 22);
+            this.btnMenuItemStop.Text = "Stop";
+            this.btnMenuItemStop.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // btnMenuItemStart
+            // 
+            this.btnMenuItemStart.Image = global::MESquare.Paparazzi.Properties.Resources.play_simple_48x48;
+            this.btnMenuItemStart.Name = "btnMenuItemStart";
+            this.btnMenuItemStart.Size = new System.Drawing.Size(180, 22);
+            this.btnMenuItemStart.Text = "Start";
+            this.btnMenuItemStart.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // btnMenuItemOpen
+            // 
+            this.btnMenuItemOpen.Name = "btnMenuItemOpen";
+            this.btnMenuItemOpen.Size = new System.Drawing.Size(180, 22);
+            this.btnMenuItemOpen.Text = "Open";
+            this.btnMenuItemOpen.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -160,6 +199,7 @@
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,6 +217,10 @@
         private System.Windows.Forms.ToolStripButton btnSettings;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem btnMenuItemStop;
+        private System.Windows.Forms.ToolStripMenuItem btnMenuItemStart;
+        private System.Windows.Forms.ToolStripMenuItem btnMenuItemOpen;
     }
 }
 

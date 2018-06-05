@@ -56,9 +56,16 @@ namespace MESquare.Paparazzi
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            this.Stop();
+        }
+
+        private void Stop()
+        { 
             this.paparazzi.Stop();
             this.btnStop.Enabled = false;
             this.btnStart.Enabled = true;
+            this.btnMenuItemStart.Enabled = true;
+            this.btnMenuItemStop.Enabled = false;
             this.lblStatus.Text = "Press 'Start' to start the process";
         }
 
@@ -74,15 +81,21 @@ namespace MESquare.Paparazzi
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            Start();
+        }
+
+        private void Start()
+        { 
             this.paparazzi.Start();
             this.btnStop.Enabled = true;
             this.btnStart.Enabled = false;
+            this.btnMenuItemStart.Enabled = false;
+            this.btnMenuItemStop.Enabled = true;
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.Show();
-            this.BringToFront();
+            this.Open();
         }
 
         private void frmMain_Resize(object sender, EventArgs e)
@@ -100,6 +113,27 @@ namespace MESquare.Paparazzi
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Open();
+        }
+
+        private void Open()
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Start();
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Stop();
         }
     }
 }
